@@ -1,0 +1,27 @@
+//////////////////
+// COMPASS
+//////////////////
+@import "compass/css3/transition";
+@import "compass/css3/opacity";
+@import "mixins";
+
+//////////////////
+// IMPORTS
+//////////////////
+@import "normalize";
+
+/////////////////
+// GLOBALS
+/////////////////
+$canada-red: #FF0000;
+$canada-white: #FFFFFF;
+
+
+header, footer {
+	background:$canada-red;
+	color:$canada-white;
+
+	a {
+		color:$canada-white;
+	}
+}

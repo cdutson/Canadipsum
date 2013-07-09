@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<title>Canadian Ipsum</title>
+
+		<link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+	</head>
+	<body ng-controller="WordCtrl">
+	<header>
+		<h1>Canadian Ipsum, eh?</h1>
+	</header>
+	<form ng-submit="requestParagraphs()">
+		<input type="number" min="1" id="no" ng-model="amount" required/>
+
+		<ul>
+			<li><input type="radio" name="type" ng-model="returnType" value="paragraph" id="rad-para"/><label for="rad-para">paragraphs</label></li>
+			<li><input type="radio" name="type" ng-model="returnType" value="sentences" id="rad-sentence"/><label for="rad-sentence">sentences</label></li>
+			<li><input type="radio" name="type" ng-model="returnType" value="words" id="rad-words"/><label for="rad-words">words</label></li>
+		</ul>
+		<!--<input type="button" ng-click="addParagraph()" value="hey there" />-->
+		<input type="submit" value="Go"/>
+	</form>
+	<div id="result">
+		<p ng-repeat="para in paragraphs">
+			{{renderSentences(para)}}
+		</p>
+	</div>
+
+	<footer>
+		<h1>Why?</h1>
+		<p>Simply put: because I wanted to learn Angular.js, Python, and how to make an REST API.</p>
+		<p>Also: Why not, eh?</p>
+		<p>Created by <a href="http://wallofscribbles.com">Corey Dutson</a>
+	</footer>
+	</body>
+</html>
