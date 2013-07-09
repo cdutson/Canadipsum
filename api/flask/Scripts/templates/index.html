@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="canadipsum">
 	<head>
 		<title>Canadian Ipsum</title>
 
-		<link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/controllers.js"></script>
+		<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
 	</head>
 	<body ng-controller="WordCtrl">
 	<header>
@@ -17,16 +16,16 @@
 		<input type="number" min="1" id="no" ng-model="amount" required/>
 
 		<ul>
-			<li><input type="radio" name="type" ng-model="returnType" value="paragraph" id="rad-para"/><label for="rad-para">paragraphs</label></li>
-			<li><input type="radio" name="type" ng-model="returnType" value="sentences" id="rad-sentence"/><label for="rad-sentence">sentences</label></li>
-			<li><input type="radio" name="type" ng-model="returnType" value="words" id="rad-words"/><label for="rad-words">words</label></li>
+			<li><input type="radio" name="type" ng-model="returnType" value="p" id="rad-para"/><label for="rad-para">paragraphs</label></li>
+			<li><input type="radio" name="type" ng-model="returnType" value="s" id="rad-sentence"/><label for="rad-sentence">sentences</label></li>
+			<li><input type="radio" name="type" ng-model="returnType" value="w" id="rad-words"/><label for="rad-words">words</label></li>
 		</ul>
 		<!--<input type="button" ng-click="addParagraph()" value="hey there" />-->
 		<input type="submit" value="Go"/>
 	</form>
 	<div id="result">
 		<p ng-repeat="para in paragraphs">
-			{{renderSentences(para)}}
+			{[{renderSentences(para)}]}
 		</p>
 	</div>
 
