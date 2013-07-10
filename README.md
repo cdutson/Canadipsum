@@ -13,6 +13,12 @@ A Lorem Ipsum generator with a Canadian twist. I'm going to create an angular.js
 number of paragraphs, number of sentences per, or number of words. The words shall be Canadian in nature! Why?
 Because it doesn't exist and I wanna learn.
 
+Setup
+-----
+
+If you actually want to run this, you'll need to set this up in a virtualenv using flask.
+
+
 Structure
 ---------
 

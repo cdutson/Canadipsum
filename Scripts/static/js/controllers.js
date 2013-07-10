@@ -19,7 +19,6 @@ function WordCtrl($scope, $http) {
 		// from server: gets JSON string and stores it in the paragraphs
 		var url = $scope.returnType +"/" + $scope.amount;
 		$http.get(url).success(function(data) {
-			console.log(data)
     		$scope.paragraphs = data.collection;
   		});
 	};
@@ -47,6 +46,6 @@ function WordCtrl($scope, $http) {
 				returnVal.push(w.word);
 		});
 
-		return returnVal.join(" ") + sentence.ending;
+		return returnVal.join(" ") + sentence.ending.ending;
 	};
 }
