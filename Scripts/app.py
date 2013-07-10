@@ -5,11 +5,11 @@ import random
 
 from random import randint
 
-from flask import g
 from flask import Flask
+from flask import g
 from flask import jsonify
 from flask import render_template
-
+from flask import request
 
 app = Flask(__name__)
 
@@ -54,7 +54,6 @@ def init_db():
 		cur = db.execute(req)
 		# totally lifted from flask website. I'd do this way worse on my own
 		all_words = [dict(word=row[1], length=row[2]) for row in cur.fetchall()]
-		print all_words
 		req = "SELECT * FROM endings ORDER BY ending"
 		cur = db.execute(req)
 		# totally lifted from flask website. I'd do this way worse on my own
@@ -95,25 +94,15 @@ def get_words(word_count):
 def get_ending():
 	return random.choice(all_endings)
 
-
-########################
-# ROUTING
-########################
-@app.route('/')
-def index():
-	check_db()
-	return render_template('index.html')
-
-@app.route('/p/<int:request_no>')
-def return_paragraph_json(request_no):
+def construct_paragraph_dict(request_no):
 	check_db()
 	# Some rules:
 	# - sentences will have between 13 and 18 words from the DB
 	# - this will return 4-6 sentences
 	collection = []
-	for x in range(0, request_no): # paragraph loop
+	for x in range(0, request_no):
 		sentences = []
-		for x in range(0, randint(3,6)): # sentence loop
+		for y in range(0, randint(3,6)):
 			# totally lifted from flask website. I'd do this way worse on my own
 			words = get_words(randint(13,18))
 			sentence = dict(words=words, ending=get_ending())
@@ -121,17 +110,16 @@ def return_paragraph_json(request_no):
 		p = dict(sentences=sentences)
 		collection.append(dict(p=p))
 
-	return json.dumps(dict(collection=collection))
+	return dict(collection=collection)
 
 
-@app.route('/s/<int:request_no>')
-def return_sentence_json(request_no):
+def construct_sentence_dict(request_no):
 	check_db()
 	# Some rules:
 	# - sentences will have between 13 and 18 words from the DB
 	collection = []
 	sentences = []
-	for x in range(0, request_no): # sentence loop
+	for x in range(0, request_no):
 		req = "SELECT * FROM words ORDER BY RANDOM() LIMIT " + str(randint(13,18))
 		cur = g.db.execute(req)
 		# totally lifted from flask website. I'd do this way worse on my own
@@ -142,12 +130,12 @@ def return_sentence_json(request_no):
 	p = dict(sentences=sentences)
 	collection.append(dict(p=p))
 
+	return dict(collection=collection)
 
-	return json.dumps(dict(collection=collection))
 
-@app.route('/w/<int:request_no>')
-def return_word_json(request_no):
+def construct_word_dict(request_no):
 	check_db()
+
 	collection = []
 	sentences = []
 
@@ -160,8 +148,61 @@ def return_word_json(request_no):
 	p = dict(sentences=sentences)
 	collection.append(dict(p=p))
 
+	return dict(collection=collection)
 
-	return json.dumps(dict(collection=collection))
+
+def dict_to_paragraphs(collection):
+	paragraphs = collection.itervalues().next()
+	return_val = ""
+
+	for para_dict in paragraphs:
+		return_val += "<p>"
+
+		for sentence_dict in para_dict['p']['sentences']:
+
+			return_val += ' '.join(str(word_dict['word']) for word_dict in sentence_dict['sentence']['words'])
+			
+			ending_dict = sentence_dict['sentence']['ending']
+			return_val += ending_dict['ending']
+		return_val +="</p>"
+
+	return return_val
+
+########################
+# ROUTING
+########################
+@app.route('/', methods=['POST', 'GET'])
+def index():
+	check_db()
+	if request.method == 'POST':
+		collection = None
+		request_no = int(request.form['numb'])
+		request_type = request.form['type']
+		result = ""
+		if request_type == "s":
+			result = dict_to_paragraphs(construct_sentence_dict(request_no))
+		elif request_type == "w":
+			result = dict_to_paragraphs(construct_word_dict(request_no))
+		else:
+			result = dict_to_paragraphs(construct_paragraph_dict(request_no))
+
+		print result
+		return render_template('index.html', result=result)
+
+	return render_template('index.html')
+
+@app.route('/p/<int:request_no>')
+def return_paragraphs(request_no):
+	return json.dumps(construct_paragraph_dict(request_no))
+
+
+@app.route('/s/<int:request_no>')
+def return_sentences(request_no):
+	return json.dumps(construct_sentence_dict(request_no))
+
+@app.route('/w/<int:request_no>')
+def return_words(request_no):
+	return json.dumps(construct_word_dict(request_no))
 
 
 if __name__ == '__main__':

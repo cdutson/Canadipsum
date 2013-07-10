@@ -5,18 +5,18 @@
 
 		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
 
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 		<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
 	</head>
 	<body ng-controller="WordCtrl">
 	<header>
 		<h1>Canadian Ipsum, eh?</h1>
 	</header>
-	<form ng-submit="requestParagraphs()">
-		<input type="number" min="1" id="no" ng-model="amount" required/>
+	<form action="/" method="post" ng-submit="requestParagraphs()">
+		<input type="number" name="numb" min="1" id="numb" ng-model="amount" value="1" required/>
 
 		<ul>
-			<li><input type="radio" name="type" ng-model="returnType" value="p" id="rad-para"/><label for="rad-para">paragraphs</label></li>
+			<li><input type="radio" name="type" ng-model="returnType" value="p" id="rad-para" checked/><label for="rad-para">paragraphs</label></li>
 			<li><input type="radio" name="type" ng-model="returnType" value="s" id="rad-sentence"/><label for="rad-sentence">sentences</label></li>
 			<li><input type="radio" name="type" ng-model="returnType" value="w" id="rad-words"/><label for="rad-words">words</label></li>
 		</ul>
@@ -24,9 +24,14 @@
 		<input type="submit" value="Go"/>
 	</form>
 	<div id="result">
-		<p ng-repeat="para in paragraphs">
-			{[{renderSentences(para)}]}
-		</p>
+		{% if result %}
+			{{ result|safe }}
+		{% else %}
+			<p ng-repeat="para in paragraphs">
+				{[{renderSentences(para)}]}
+			</p>
+		{% endif %}
+		
 	</div>
 
 	<footer>
