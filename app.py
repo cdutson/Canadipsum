@@ -87,12 +87,19 @@ def close_connection(exception):
 ########################
 # HELPERS
 ########################
+
+def upcase_first_letter(s):
+    return s[0].upper() + s[1:]
+
 def get_words(word_count):
 	with app.app_context():
 		return random.sample(all_words, word_count)
 
 def get_ending():
 	return random.choice(all_endings)
+
+def get_injection():
+	return random.choice(all_injections)
 
 def construct_paragraph_dict(request_no):
 	check_db()
@@ -105,7 +112,7 @@ def construct_paragraph_dict(request_no):
 		for y in range(0, randint(3,6)):
 			# totally lifted from flask website. I'd do this way worse on my own
 			words = get_words(randint(13,18))
-			sentence = dict(words=words, ending=get_ending())
+			sentence = dict(words=words, ending=get_ending(), injection=get_injection(), randPos=randint(0,len(words)-1))
 			sentences.append(dict(sentence=sentence))
 		p = dict(sentences=sentences)
 		collection.append(dict(p=p))
@@ -124,7 +131,7 @@ def construct_sentence_dict(request_no):
 		cur = g.db.execute(req)
 		# totally lifted from flask website. I'd do this way worse on my own
 		words = [dict(word=row[1], length=row[2]) for row in cur.fetchall()]
-		sentence = dict(words=words, ending=get_ending())
+		sentence = dict(words=words, ending=get_ending(), injection=get_injection(), randPos=randint(0,len(words)-1))
 		sentences.append(dict(sentence=sentence))
 
 	p = dict(sentences=sentences)
@@ -143,7 +150,7 @@ def construct_word_dict(request_no):
 	cur = g.db.execute(req)
 	# totally lifted from flask website. I'd do this way worse on my own
 	words = [dict(word=row[1], length=row[2]) for row in cur.fetchall()]
-	sentence = dict(words=words, ending=get_ending())
+	sentence = dict(words=words, ending=get_ending(), injection=get_injection(), randPos=randint(0,len(words)-1))
 	sentences.append(dict(sentence=sentence))
 	p = dict(sentences=sentences)
 	collection.append(dict(p=p))
@@ -152,18 +159,22 @@ def construct_word_dict(request_no):
 
 
 def dict_to_paragraphs(collection):
-	paragraphs = collection.itervalues().next()
+	paragraphs = collection['collection']
 	return_val = ""
-
 	for para_dict in paragraphs:
 		return_val += "<p>"
 
 		for sentence_dict in para_dict['p']['sentences']:
+			new_word_collection = sentence_dict['sentence']['words']
+			random_word_no = sentence_dict['sentence']['randPos']
+			new_word_collection[random_word_no]['word'] += sentence_dict['sentence']['injection']['injection']
 
-			return_val += ' '.join(str(word_dict['word']) for word_dict in sentence_dict['sentence']['words'])
-			
+			sentence = ' '.join(str(word_dict['word']) for word_dict in new_word_collection)
+			sentence = upcase_first_letter(sentence)
+
+			return_val += sentence
 			ending_dict = sentence_dict['sentence']['ending']
-			return_val += ending_dict['ending']
+			return_val += ending_dict['ending']+ ' '
 		return_val +="</p>"
 
 	return return_val
@@ -193,15 +204,22 @@ def index():
 
 @app.route('/p/<int:request_no>')
 def return_paragraphs(request_no):
+	if request_no > int(100):
+		return "Too many paragraphs. Why would you need that many? Seriously. Max request is 100 paragraphs.", 500
+
 	return json.dumps(construct_paragraph_dict(request_no))
 
 
 @app.route('/s/<int:request_no>')
 def return_sentences(request_no):
+	if request_no > int(50):
+		return "Too many sentences. Why would you need that many? Seriously. Max request size is 50 sentences.", 500
 	return json.dumps(construct_sentence_dict(request_no))
 
 @app.route('/w/<int:request_no>')
 def return_words(request_no):
+	if request_no > int(200):
+		return "Too many words. Why would you need that many? Seriously. Max request size is 200 words", 500
 	return json.dumps(construct_word_dict(request_no))
 
 

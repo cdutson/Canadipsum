@@ -32,7 +32,7 @@ insert into endings(ending,length) values(', ya know?', 10);
 insert into injections(injection,length) values(',', 1);
 insert into injections(injection,length) values(':', 1);
 insert into injections(injection,length) values(';', 1);
-insert into injections(injection,length) values('you know, and', 13);
+insert into injections(injection,length) values(' you know, and', 14);
 
 /* pulled from http://www.canadaka.net/content/page/124-canadian-slang--english-words*/
 insert into words(word,length) values('allophone', 9);

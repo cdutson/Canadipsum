@@ -5,23 +5,22 @@
 
 		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
 
-		<<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 		<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
 	</head>
 	<body ng-controller="WordCtrl">
 	<header>
 		<h1>Canadian Ipsum, eh?</h1>
 	</header>
-	<form action="/" method="post" ng-submit="requestParagraphs()">
-		<input type="number" name="numb" min="1" id="numb" ng-model="amount" value="1" required/>
+	<form id="requestForm" method="post">
+		<input type="number" name="numb" min="1" max="100" id="numb" ng-model="amount" required value="1"/>
 
 		<ul>
 			<li><input type="radio" name="type" ng-model="returnType" value="p" id="rad-para" checked/><label for="rad-para">paragraphs</label></li>
 			<li><input type="radio" name="type" ng-model="returnType" value="s" id="rad-sentence"/><label for="rad-sentence">sentences</label></li>
 			<li><input type="radio" name="type" ng-model="returnType" value="w" id="rad-words"/><label for="rad-words">words</label></li>
 		</ul>
-		<!--<input type="button" ng-click="addParagraph()" value="hey there" />-->
-		<input type="submit" value="Go"/>
+		<input type="submit" value="Go" ng-click="requestParagraphs()"/>
 	</form>
 	<div id="result">
 		{% if result %}
