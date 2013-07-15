@@ -197,7 +197,6 @@ def index():
 		else:
 			result = dict_to_paragraphs(construct_paragraph_dict(request_no))
 
-		print result
 		return render_template('index.html', result=result)
 
 	return render_template('index.html')
