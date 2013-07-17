@@ -3,7 +3,7 @@
 	<head>
 		<title>Canadipsum</title>
 		
-		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville|Bevan' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic|Bevan' rel='stylesheet' type='text/css'>
 		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
 		<!--[if lt IE 9]>
 		<script src="{{ url_for('static', filename='js/html5shiv.js') }}"></script>
@@ -12,15 +12,15 @@
 
 	</head>
 	<body ng-controller="WordCtrl">
-	<header>
-		<h1>Canadian Ipsum, eh?</h1>
-
+	<header class="clearfix">
+		<section id="intro">
+			<h1>Canadian Ipsum</h1>
+			<p>When your project just needs to be a little more Canadian, <em>eh?</em></p>
+		</section>
 		<section id="about">
 			<h1>Why?</h1>
-			<p>Simply put: because I wanted to learn Angular.js, Python, and how to make an REST API.</p>
-			<p>Also: Why not, eh?</p>
-			<p>Created by <a href="http://wallofscribbles.com">Corey Dutson</a>
-			</p>
+			<p>It didn't exist, I wanted to learn some new technologies, and why the hell not?</p>
+			<p>Created by <a href="http://wallofscribbles.com">Corey Dutson</a>.</p>
 		</section>
 	</header>
 	<form id="requestForm" method="post">

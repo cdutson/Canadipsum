@@ -51,6 +51,28 @@ header, footer {
 
 header {
 	
+	padding:10px 15px;
+
+	&.clearfix {
+		display:block;
+	}
+	#intro {
+		float:left;
+		width:65%;
+
+		p {
+			font-family:$fancy-font;
+			margin:0px;
+		}
+	}
+	#about {
+		float:right;
+		width:25%;
+		margin-right:5%;
+		p {
+			font-size:80%;
+		}
+	}
 }
 
 footer {
