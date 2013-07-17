@@ -69,7 +69,7 @@ def init_db():
 		req = "SELECT * FROM backgrounds ORDER BY author"
 		cur = db.execute(req)
 		# totally lifted from flask website. I'd do this way worse on my own
-		all_backgrounds = [dict(filename=row[1], url=row[2], author=row[3]) for row in cur.fetchall()]
+		all_backgrounds = [dict(filename=row[1], url=row[2], author=row[3], source=row[4]) for row in cur.fetchall()]
 
 
 

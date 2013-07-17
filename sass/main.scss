@@ -20,18 +20,37 @@ $canada-red-transparent: rgba(255,0,0,0.7);
 $canada-white: #FFFFFF;
 $canada-white-transparent: rgba(255,255,255,0.8);
 
-$display-font: 'Bevan',Helvetica,Arial,sans-serif;
+$display-font: 'Alfa Slab One',Helvetica,Arial,sans-serif;
 $fancy-font: 'Libre Baskerville', 'Times new roman', Times, serif;
 
-h1,h2,h3 {margin:0px; font-family:$display-font; font-weight:normal;}
+@mixin mx-fancy-font {
+	font-family:$fancy-font;
+	letter-spacing:0.04em;
+	font-weight:normal;
+}
+
+h1,h2,h3 {
+	margin:0px; 
+	font-family:$display-font; 
+	font-weight:normal;
+}
+
+h1{
+	font-size:300%;
+	letter-spacing:0.04em;
+}
 
 html{
 	background-size:(100% auto);
 	background-repeat:no-repeat;
 }
 
-p.angjs-p{display:none;}
-.js p.angjs-p {display:block;}
+p.angjs-p{
+	display:none;
+}
+.js p.angjs-p {
+	display:block;
+}
 
 body {
 	position:relative; min-height:100%;
@@ -66,8 +85,8 @@ header {
 		width:65%;
 
 		p {
-			font-family:$fancy-font;
-			margin:0px;
+			@include mx-fancy-font;
+			margin:13px 0px;
 		}
 	}
 	#about {
@@ -89,6 +108,10 @@ footer {
 	p {
 		margin:0px; 
 		padding: 10px 15px;
+		float:left;
+	}
+	#byLine {
+	float:right;
 	}
 }
 
@@ -107,14 +130,14 @@ form {
 
 	input[type="submit"] {background:$canada-red-transparent; color:$canada-white; font-family:$display-font; border:none; padding:2px 5px; margin:0px; @include border-radius(3px);}
 
-	label { display:inline-block; padding:5px 5px; margin:0px 10px 0px 0px; cursor:pointer;}
+	label { display:inline-block; padding:5px 5px; margin:0px 10px 0px 0px; cursor:pointer; font-family:$display-font;}
 
 	ul {
 		border-left:1px solid $canada-red-transparent; 
 		display:inline-block;
 		list-style-type:none;
 		margin:0px;
-		padding:0px 0px 0px 9px;
+		padding:0px 0px 0px 11px;
 
 		li {
 			display:inline-block;
@@ -125,8 +148,7 @@ form {
 }
 
 #result{
-	font-family:$fancy-font;
-	font-weight:normal;
+	@imclude mx-fancy-font;
 	margin:20px 40px; 
 	@include border-radius(5px); 
 	background:$canada-white; 

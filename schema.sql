@@ -7,7 +7,8 @@ create table backgrounds(
 	id integer primary key autoincrement,
 	filename text not null,
 	url text not null,
-	author text not null
+	author text not null,
+	source text not null
 );
 
 create table words (
@@ -30,34 +31,47 @@ create table injections (
 
 /* background images */
 
-insert into backgrounds(filename,url,author) values('33586567_4cd86fbe0b_o.jpg', 'http://www.flickr.com/photos/sparkyleigh/33586567/', 'Leigh Hilbert');
-insert into backgrounds(filename,url,author) values('257831124_961f4ecc92_o.jpg', 'http://www.flickr.com/photos/62904109@N00/257831124/', 'palindrome6996');
-insert into backgrounds(filename,url,author) values('8086903740_78388498cb_o.jpg', 'http://www.flickr.com/photos/mgabelmann/8086903740/', 'Mike Gabelmann');
-insert into backgrounds(filename,url,author) values('2123523275_bf10e0ef17_o.jpg', 'http://www.flickr.com/photos/alexindigo/2123523275/', 'Alex Indigo');
-insert into backgrounds(filename,url,author) values('2336548126_871b4d7852_o.jpg', 'http://www.flickr.com/photos/mikebaird/2336548126/', 'Mike Baird');
-insert into backgrounds(filename,url,author) values('4382484323_fd2b3a80fa_o.jpg', 'http://www.flickr.com/photos/syume/4382484323/', 's.yume');
-insert into backgrounds(filename,url,author) values('7227926738_4bd6a779e4_o.jpg', 'http://www.flickr.com/photos/hobolens/7227926738/', 'Brian (Hobolens)');
-insert into backgrounds(filename,url,author) values('7176210474_2a53a3c9da_o.jpg', 'http://www.flickr.com/photos/hobolens/7176210474/', 'Brian (Hobolens)');
-insert into backgrounds(filename,url,author) values('4367000814_444c09a89c_o.jpg', 'http://www.flickr.com/photos/syume/4367000814/', 's.yume');
-insert into backgrounds(filename,url,author) values('4371177429_f998e1b76f_o.jpg', 'http://www.flickr.com/photos/syume/4371177429/', 's.yume');
-insert into backgrounds(filename,url,author) values('5856004982_f525f48a94_o.jpg', 'http://www.flickr.com/photos/kk/5856004982/', 'kris krüg');
-insert into backgrounds(filename,url,author) values('5841019603_3055f42aed_o.jpg', 'http://www.flickr.com/photos/13793794@N02/5841019603/', 'Matt Gibson');
-insert into backgrounds(filename,url,author) values('1587747079_b6ee5d4c53_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587747079/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1588612194_accd01ba0f_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588612194/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1588620090_bd0ea4878d_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588620090/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1588628360_e61326abb5_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588628360/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587720707_ca3364576f_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587720707/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1588631124_b42f011de2_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588631124/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1588622894_1348bb6f49_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588622894/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587744415_f8c0ed2aa6_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587744415/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587728695_435515ba9f_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587728695/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587717987_e843aeb4f9_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587717987/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587736431_099a595b92_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587736431/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587726031_4f040df502_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587726031/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('1587715431_e435c2090a_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587715431/', 'Ehsan');
-insert into backgrounds(filename,url,author) values('2853087722_116eb85e46_o.jpg', 'http://www.flickr.com/photos/sparkyleigh/33586567/', 'Dennis Jarvis');
-insert into backgrounds(filename,url,author) values('5222252730_2dd0060b93_o.jpg', 'http://www.flickr.com/photos/tourismnewbrunswick/5222252730/', 'New Brunswick Tourism');
-insert into backgrounds(filename,url,author) values('409814158_6afbf2ea69_o.jpg', 'http://www.flickr.com/photos/ytwhitelight/409814158/', 'Amanda Graham');
+insert into backgrounds(filename,url,author,source) values('33586567_4cd86fbe0b_o.jpg', 'http://www.flickr.com/photos/sparkyleigh/33586567/', 'Leigh Hilbert','Flickr');
+insert into backgrounds(filename,url,author,source) values('257831124_961f4ecc92_o.jpg', 'http://www.flickr.com/photos/62904109@N00/257831124/', 'palindrome6996','Flickr');
+insert into backgrounds(filename,url,author,source) values('8086903740_78388498cb_o.jpg', 'http://www.flickr.com/photos/mgabelmann/8086903740/', 'Mike Gabelmann','Flickr');
+insert into backgrounds(filename,url,author,source) values('2123523275_bf10e0ef17_o.jpg', 'http://www.flickr.com/photos/alexindigo/2123523275/', 'Alex Indigo','Flickr');
+insert into backgrounds(filename,url,author,source) values('2336548126_871b4d7852_o.jpg', 'http://www.flickr.com/photos/mikebaird/2336548126/', 'Mike Baird','Flickr');
+insert into backgrounds(filename,url,author,source) values('4382484323_fd2b3a80fa_o.jpg', 'http://www.flickr.com/photos/syume/4382484323/', 's.yume','Flickr');
+insert into backgrounds(filename,url,author,source) values('7227926738_4bd6a779e4_o.jpg', 'http://www.flickr.com/photos/hobolens/7227926738/', 'Brian (Hobolens)','Flickr');
+insert into backgrounds(filename,url,author,source) values('7176210474_2a53a3c9da_o.jpg', 'http://www.flickr.com/photos/hobolens/7176210474/', 'Brian (Hobolens)','Flickr');
+insert into backgrounds(filename,url,author,source) values('4367000814_444c09a89c_o.jpg', 'http://www.flickr.com/photos/syume/4367000814/', 's.yume','Flickr');
+insert into backgrounds(filename,url,author,source) values('4371177429_f998e1b76f_o.jpg', 'http://www.flickr.com/photos/syume/4371177429/', 's.yume','Flickr');
+insert into backgrounds(filename,url,author,source) values('5856004982_f525f48a94_o.jpg', 'http://www.flickr.com/photos/kk/5856004982/', 'kris krüg','Flickr');
+insert into backgrounds(filename,url,author,source) values('5841019603_3055f42aed_o.jpg', 'http://www.flickr.com/photos/13793794@N02/5841019603/', 'Matt Gibson','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587747079_b6ee5d4c53_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587747079/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1588612194_accd01ba0f_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588612194/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1588620090_bd0ea4878d_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588620090/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1588628360_e61326abb5_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588628360/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587720707_ca3364576f_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587720707/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1588631124_b42f011de2_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588631124/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1588622894_1348bb6f49_o.jpg', 'http://www.flickr.com/photos/lebatihem/1588622894/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587744415_f8c0ed2aa6_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587744415/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587728695_435515ba9f_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587728695/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587717987_e843aeb4f9_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587717987/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587736431_099a595b92_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587736431/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587726031_4f040df502_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587726031/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('1587715431_e435c2090a_o.jpg', 'http://www.flickr.com/photos/lebatihem/1587715431/', 'Ehsan','Flickr');
+insert into backgrounds(filename,url,author,source) values('2853087722_116eb85e46_o.jpg', 'http://www.flickr.com/photos/sparkyleigh/33586567/', 'Dennis Jarvis','Flickr');
+insert into backgrounds(filename,url,author,source) values('5222252730_2dd0060b93_o.jpg', 'http://www.flickr.com/photos/tourismnewbrunswick/5222252730/', 'New Brunswick Tourism','Flickr');
+insert into backgrounds(filename,url,author,source) values('409814158_6afbf2ea69_o.jpg', 'http://www.flickr.com/photos/ytwhitelight/409814158/', 'Amanda Graham','Flickr');
+insert into backgrounds(filename,url,author,source) values('3865019138_5e950deae9_o.jpg', 'http://www.flickr.com/photos/iceninejon/3865019138/', 'Jonathan (IceNineJon)','Flickr');
+insert into backgrounds(filename,url,author,source) values('1079205948_b31f467d72_o.jpg', 'http://www.flickr.com/photos/woodysworld1778/1079205948/', 'Jerry "Woody"','Flickr');
+insert into backgrounds(filename,url,author,source) values('6264658473_bced97bec2_o.jpg', 'http://www.flickr.com/photos/madlyinlovewithlife/6264658473/', 'madlyinlovewithlife','Flickr');
+insert into backgrounds(filename,url,author,source) values('8593116524_aa6a5b365c_o.jpg', 'http://www.flickr.com/photos/rodneykeeling/8593116524/', 'Rodney Keeling','Flickr');
+insert into backgrounds(filename,url,author,source) values('7062864815_91df009527_k.jpg', 'http://www.flickr.com/photos/bugbait/7062864815/', 'Larry McGahey','Flickr');
+insert into backgrounds(filename,url,author,source) values('5715883166_0fd5141597_o.jpg', 'http://www.flickr.com/photos/ricmcarthur/5715883166/', 'Ric McArthur','Flickr');
+insert into backgrounds(filename,url,author,source) values('2382494376_8ce0f55065_o.jpg', 'http://www.flickr.com/photos/andrewhuxtable/2382494376/', 'Andrew Hux','Flickr');
+insert into backgrounds(filename,url,author,source) values('7452918582_ec82d7c2d8_o.jpg', 'http://www.flickr.com/photos/pofortin/7452918582/', 'Pierre-Olivier Fortin','Flickr');
+insert into backgrounds(filename,url,author,source) values('2808607170_51beff49ca_o.jpg', 'http://www.flickr.com/photos/islespunkfan/2808607170/', 'Neil R','Flickr');
+insert into backgrounds(filename,url,author,source) values('3038403005_697f27c6fb_b.jpg', 'http://www.flickr.com/photos/manitobamaps/3038403005/', 'Wyman Laliberte','Flickr');
+insert into backgrounds(filename,url,author,source) values('3070463_bc516c9896_o.jpg', 'http://www.flickr.com/photos/ahenry/3070463/', 'Austin Henry','Flickr');
+insert into backgrounds(filename,url,author,source) values('3070463_bc516c9896_o.jpg', 'http://www.flickr.com/photos/thebigdurian/71969146/', 'Austin Henry','Flickr');
+
 
 /* endings */
 insert into endings(ending,length) values('.', 1);

@@ -3,7 +3,7 @@
 	<head>
 		<title>Canadipsum</title>
 		
-		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic|Bevan' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic|Alfa+Slab+One' rel='stylesheet' type='text/css'>
 		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
 		<!--[if lt IE 9]>
 		<script src="{{ url_for('static', filename='js/html5shiv.js') }}"></script>
@@ -14,13 +14,13 @@
 	<body ng-controller="WordCtrl">
 	<header class="clearfix">
 		<section id="intro">
-			<h1>Canadian Ipsum</h1>
-			<p>When your project just needs to be a little more Canadian, <em>eh?</em></p>
+			<h1>Canadipsum, eh?</h1>
+			<p>When your project just needs to be a <em>little more</em> Canadian.</p>
 		</section>
 		<section id="about">
 			<h1>Why?</h1>
 			<p>It didn't exist, I wanted to learn some new technologies, and why the hell not?</p>
-			<p>Created by <a href="http://wallofscribbles.com">Corey Dutson</a>.</p>
+			
 		</section>
 	</header>
 	<form id="requestForm" method="post">
@@ -44,8 +44,9 @@
 		
 	</div>
 
-	<footer>
-		<p>Background image from <a href="{{background.url}}">Flickr</a>. Photo taken by {{background.author}}.</p>
+	<footer class="clearfix">
+		<p id="photo-credit">Background image from <a href="{{background.url}}">{{background.source}}</a>. Photo taken by {{background.author}}. <a href="mailto:canadipsum@wallofscribbles.com?subject=New%20Image%20Request">Send me yours!</a></p>
+		<p id="byLine">Created by <a href="http://wallofscribbles.com">Corey Dutson</a>.</p>
 	</footer>
 	<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
