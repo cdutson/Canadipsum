@@ -5,7 +5,7 @@
 @import "compass/css3/opacity";
 @import "compass/css3/background-size";
 @import "compass/css3/border-radius";
-@import "mixins";
+@import "compass/css3/columns";
 
 //////////////////
 // IMPORTS
@@ -30,12 +30,17 @@ html{
 	background-repeat:no-repeat;
 }
 
+p.angjs-p{display:none;}
+.js p.angjs-p {display:block;}
+
 body {
 	position:relative; min-height:100%;
 	height:auto !important;
 	height:100%;
 	padding-bottom:60px;
 }
+
+
 
 header, footer {
 	background:$canada-red-transparent;
@@ -96,18 +101,20 @@ form {
 	background: $canada-white-transparent; 
 	color:#000; 
 
-	input[type="number"] {display:inline-block; width:100px; margin-right:15px;}
+	input[type="number"] {display:inline-block; width:100px; margin-right:7px;}
 	input[type="radio"] {display:none}
 	input[type="radio"]:checked + label { background:$canada-red-transparent; color:$canada-white; @include border-radius(3px); }
 
-	label { display:block; padding:2px 5px; margin:0px 10px 0px 0px; cursor:pointer;}
+	input[type="submit"] {background:$canada-red-transparent; color:$canada-white; font-family:$display-font; border:none; padding:2px 5px; margin:0px; @include border-radius(3px);}
+
+	label { display:inline-block; padding:5px 5px; margin:0px 10px 0px 0px; cursor:pointer;}
 
 	ul {
-		
+		border-left:1px solid $canada-red-transparent; 
 		display:inline-block;
 		list-style-type:none;
 		margin:0px;
-		padding:0px;
+		padding:0px 0px 0px 9px;
 
 		li {
 			display:inline-block;
@@ -132,6 +139,6 @@ form {
 		}
 		padding:0px 15px 15px;
 		margin:0px;
-		line-height:1.4;
+		line-height:1.5;
 	}
 }

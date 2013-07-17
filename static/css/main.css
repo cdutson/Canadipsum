@@ -164,6 +164,10 @@ h1, h2, h3 { margin: 0px; font-family: "Bevan", Helvetica, Arial, sans-serif; fo
 
 html { background-size: 100% auto; background-repeat: no-repeat; }
 
+p.angjs-p { display: none; }
+
+.js p.angjs-p { display: block; }
+
 body { position: relative; min-height: 100%; height: auto !important; height: 100%; padding-bottom: 60px; }
 
 header, footer { background: rgba(255, 0, 0, 0.7); color: white; }
@@ -181,13 +185,14 @@ footer { position: fixed; bottom: 0; left: 0px; right: 0px; }
 footer p { margin: 0px; padding: 10px 15px; }
 
 form { padding: 15px; margin: 20px 40px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background: white; background: rgba(255, 255, 255, 0.8); color: #000; }
-form input[type="number"] { display: inline-block; width: 100px; margin-right: 15px; }
+form input[type="number"] { display: inline-block; width: 100px; margin-right: 7px; }
 form input[type="radio"] { display: none; }
 form input[type="radio"]:checked + label { background: rgba(255, 0, 0, 0.7); color: white; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
-form label { display: block; padding: 2px 5px; margin: 0px 10px 0px 0px; cursor: pointer; }
-form ul { display: inline-block; list-style-type: none; margin: 0px; padding: 0px; }
+form input[type="submit"] { background: rgba(255, 0, 0, 0.7); color: white; font-family: "Bevan", Helvetica, Arial, sans-serif; border: none; padding: 2px 5px; margin: 0px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
+form label { display: inline-block; padding: 5px 5px; margin: 0px 10px 0px 0px; cursor: pointer; }
+form ul { border-left: 1px solid rgba(255, 0, 0, 0.7); display: inline-block; list-style-type: none; margin: 0px; padding: 0px 0px 0px 9px; }
 form ul li { display: inline-block; min-width: 100px; text-align: center; }
 
 #result { font-family: "Libre Baskerville", "Times new roman", Times, serif; font-weight: normal; margin: 20px 40px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background: white; background: rgba(255, 255, 255, 0.8); color: #000; }
-#result p { padding: 0px 15px 15px; margin: 0px; line-height: 1.4; }
+#result p { padding: 0px 15px 15px; margin: 0px; line-height: 1.5; }
 #result p:first-child { padding-top: 15px; }

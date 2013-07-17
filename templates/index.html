@@ -24,7 +24,7 @@
 		</section>
 	</header>
 	<form id="requestForm" method="post">
-		<input type="number" name="numb" min="1" max="100" id="numb" ng-model="amount" required value="1"/>
+		<label for="numb">Enter a number (max 100):</label><input type="number" name="numb" min="1" max="100" id="numb" ng-model="amount" required value="1"/>
 
 		<ul>
 			<li><input type="radio" name="type" ng-model="returnType" value="p" id="rad-para" checked/><label for="rad-para">paragraphs</label></li>
@@ -37,7 +37,7 @@
 		{% if result %}
 			{{ result|safe }}
 		{% else %}
-			<p ng-repeat="para in paragraphs">
+			<p class="angjs-p" ng-repeat="para in paragraphs">
 				{[{renderSentences(para)}]}
 			</p>
 		{% endif %}
