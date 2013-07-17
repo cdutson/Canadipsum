@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html ng-app="canadipsum">
+<html ng-app="canadipsum" style="background-image:url('{{ url_for('static', filename='img/bg/'+background.filename) }}')" data-bg="{{background.filename}}">
 	<head>
-		<title>Canadian Ipsum</title>
-
+		<title>Canadipsum</title>
+		
+		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville|Bevan' rel='stylesheet' type='text/css'>
 		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
-
+		<!--[if lt IE 9]>
+		<script src="{{ url_for('static', filename='js/html5shiv.js') }}"></script>
+		<![endif]-->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-		<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+
 	</head>
 	<body ng-controller="WordCtrl">
 	<header>
 		<h1>Canadian Ipsum, eh?</h1>
+
+		<section id="about">
+			<h1>Why?</h1>
+			<p>Simply put: because I wanted to learn Angular.js, Python, and how to make an REST API.</p>
+			<p>Also: Why not, eh?</p>
+			<p>Created by <a href="http://wallofscribbles.com">Corey Dutson</a>
+			</p>
+		</section>
 	</header>
 	<form id="requestForm" method="post">
 		<input type="number" name="numb" min="1" max="100" id="numb" ng-model="amount" required value="1"/>
@@ -34,10 +45,11 @@
 	</div>
 
 	<footer>
-		<h1>Why?</h1>
-		<p>Simply put: because I wanted to learn Angular.js, Python, and how to make an REST API.</p>
-		<p>Also: Why not, eh?</p>
-		<p>Created by <a href="http://wallofscribbles.com">Corey Dutson</a>
+		<p>Background image from <a href="{{background.url}}">Flickr</a>. Photo taken by {{background.author}}.</p>
 	</footer>
+	<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+	<script src="{{ url_for('static', filename='js/general.js') }}"></script>
 	</body>
 </html>

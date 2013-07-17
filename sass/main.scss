@@ -1,8 +1,10 @@
 //////////////////
 // COMPASS
 //////////////////
-@import "compass/css3/transition";
+
 @import "compass/css3/opacity";
+@import "compass/css3/background-size";
+@import "compass/css3/border-radius";
 @import "mixins";
 
 //////////////////
@@ -14,14 +16,100 @@
 // GLOBALS
 /////////////////
 $canada-red: #FF0000;
+$canada-red-transparent: rgba(255,0,0,0.7);
 $canada-white: #FFFFFF;
+$canada-white-transparent: rgba(255,255,255,0.8);
 
+$display-font: 'Bevan',Helvetica,Arial,sans-serif;
+$fancy-font: 'Libre Baskerville', 'Times new roman', Times, serif;
+
+h1,h2,h3 {margin:0px; font-family:$display-font; font-weight:normal;}
+
+html{
+	background-size:(100% auto);
+	background-repeat:no-repeat;
+}
+
+body {
+	position:relative; min-height:100%;
+	height:auto !important;
+	height:100%;
+	padding-bottom:60px;
+}
 
 header, footer {
-	background:$canada-red;
+	background:$canada-red-transparent;
 	color:$canada-white;
 
 	a {
 		color:$canada-white;
+		&:hover {
+		color:#000000;
+		}
+	}
+}
+
+header {
+	
+}
+
+footer {
+	position:fixed; 
+	bottom:0; 
+	left:0px; 
+	right:0px;
+
+	p {
+		margin:0px; 
+		padding: 10px 15px;
+	}
+}
+
+
+form { 
+	padding:15px; 
+	margin:20px 40px; 
+	@include border-radius(5px); 
+	background:$canada-white; 
+	background: $canada-white-transparent; 
+	color:#000; 
+
+	input[type="number"] {display:inline-block; width:100px; margin-right:15px;}
+	input[type="radio"] {display:none}
+	input[type="radio"]:checked + label { background:$canada-red-transparent; color:$canada-white; @include border-radius(3px); }
+
+	label { display:block; padding:2px 5px; margin:0px 10px 0px 0px; cursor:pointer;}
+
+	ul {
+		
+		display:inline-block;
+		list-style-type:none;
+		margin:0px;
+		padding:0px;
+
+		li {
+			display:inline-block;
+			min-width:100px;
+			text-align:center;
+		}
+	}
+}
+
+#result{
+	font-family:$fancy-font;
+	font-weight:normal;
+	margin:20px 40px; 
+	@include border-radius(5px); 
+	background:$canada-white; 
+	background: $canada-white-transparent; 
+	color:#000; 
+
+	p {
+		&:first-child{
+			padding-top:15px;
+		}
+		padding:0px 15px 15px;
+		margin:0px;
+		line-height:1.4;
 	}
 }

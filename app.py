@@ -24,6 +24,7 @@ DATABASE = 'words.db'
 all_words = []
 all_endings = []
 all_injections = []
+all_backgrounds = []
 
 def connect_db():
     return sqlite3.connect(DATABASE)
@@ -49,6 +50,7 @@ def init_db():
 		global all_words
 		global all_endings
 		global all_injections
+		global all_backgrounds
 
 		req = "SELECT * FROM words ORDER BY word"
 		cur = db.execute(req)
@@ -63,6 +65,11 @@ def init_db():
 		cur = db.execute(req)
 		# totally lifted from flask website. I'd do this way worse on my own
 		all_injections = [dict(injection=row[1], length=row[2]) for row in cur.fetchall()]
+
+		req = "SELECT * FROM backgrounds ORDER BY author"
+		cur = db.execute(req)
+		# totally lifted from flask website. I'd do this way worse on my own
+		all_backgrounds = [dict(filename=row[1], url=row[2], author=row[3]) for row in cur.fetchall()]
 
 
 
@@ -100,6 +107,9 @@ def get_ending():
 
 def get_injection():
 	return random.choice(all_injections)
+
+def get_background():
+	return random.choice(all_backgrounds)
 
 def construct_paragraph_dict(request_no):
 	check_db()
@@ -197,9 +207,9 @@ def index():
 		else:
 			result = dict_to_paragraphs(construct_paragraph_dict(request_no))
 
-		return render_template('index.html', result=result)
+		return render_template('index.html', result=result, background=get_background())
 
-	return render_template('index.html')
+	return render_template('index.html', background=get_background())
 
 @app.route('/p/<int:request_no>')
 def return_paragraphs(request_no):
