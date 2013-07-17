@@ -72,14 +72,16 @@ insert into backgrounds(filename,url,author,source) values('3038403005_697f27c6f
 insert into backgrounds(filename,url,author,source) values('3070463_bc516c9896_o.jpg', 'http://www.flickr.com/photos/ahenry/3070463/', 'Austin Henry','Flickr');
 insert into backgrounds(filename,url,author,source) values('3070463_bc516c9896_o.jpg', 'http://www.flickr.com/photos/thebigdurian/71969146/', 'Austin Henry','Flickr');
 
-
 /* endings */
 insert into endings(ending,length) values('.', 1);
 insert into endings(ending,length) values('?', 1);
 insert into endings(ending,length) values('!', 1);
 insert into endings(ending,length) values(', eh?', 5);
-insert into endings(ending,length) values(' eh!', 4);
+insert into endings(ending,length) values(', eh!', 4);
+insert into endings(ending,length) values(', eh.', 4);
 insert into endings(ending,length) values(', ya know?', 10);
+insert into endings(ending,length) values(', fack.', 10);
+insert into endings(ending,length) values(', fack!', 10);
 
 /* injections */
 insert into injections(injection,length) values(',', 1);
