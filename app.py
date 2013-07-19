@@ -49,7 +49,7 @@ def init_db():
 		db.commit()
 
 def pull_data():
-
+	#init_db()
 	with app.app_context():
 		db = get_db()
 		
