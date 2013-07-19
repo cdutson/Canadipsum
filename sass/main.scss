@@ -2,7 +2,6 @@
 // COMPASS
 //////////////////
 
-@import "compass/css3/opacity";
 @import "compass/css3/background-size";
 @import "compass/css3/border-radius";
 @import "compass/css3/columns";
@@ -148,7 +147,6 @@ form {
 }
 
 #result{
-	@imclude mx-fancy-font;
 	margin:20px 40px; 
 	@include border-radius(5px); 
 	background:$canada-white; 

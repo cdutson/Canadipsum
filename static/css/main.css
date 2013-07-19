@@ -196,6 +196,6 @@ form label { display: inline-block; padding: 5px 5px; margin: 0px 10px 0px 0px; 
 form ul { border-left: 1px solid rgba(255, 0, 0, 0.7); display: inline-block; list-style-type: none; margin: 0px; padding: 0px 0px 0px 11px; }
 form ul li { display: inline-block; min-width: 100px; text-align: center; }
 
-#result { @imclude mx-fancy-font; margin: 20px 40px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background: white; background: rgba(255, 255, 255, 0.8); color: #000; }
+#result { margin: 20px 40px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background: white; background: rgba(255, 255, 255, 0.8); color: #000; }
 #result p { padding: 0px 15px 15px; margin: 0px; line-height: 1.5; }
 #result p:first-child { padding-top: 15px; }

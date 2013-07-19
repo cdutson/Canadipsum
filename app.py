@@ -20,6 +20,7 @@ app = Flask(__name__)
 # I'm always a bit shit when it comes to Databases.
 
 DATABASE = 'words.db'
+S3LOCATION = 'http://canadipsum.s3.amazonaws.com/bg/'
 
 all_words = []
 all_endings = []
@@ -207,9 +208,9 @@ def index():
 		else:
 			result = dict_to_paragraphs(construct_paragraph_dict(request_no))
 
-		return render_template('index.html', result=result, background=get_background())
+		return render_template('index.html', result=result, background=get_background(), amz=S3LOCATION)
 
-	return render_template('index.html', background=get_background())
+	return render_template('index.html', background=get_background(), amz=S3LOCATION)
 
 @app.route('/p/<int:request_no>')
 def return_paragraphs(request_no):
