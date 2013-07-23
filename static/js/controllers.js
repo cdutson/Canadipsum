@@ -10,6 +10,24 @@ angular.module('canadipsum', []).config(function($interpolateProvider){
 
 function WordCtrl($scope, $http) {
 
+	// workhorse function that stitches a sentence together
+	var renderSentence = function(sentence) {
+		var returnVal = [], rand = sentence.randPos, injection = sentence.injection.injection;
+
+		for(key in sentence.words){
+			if (sentence.words.hasOwnProperty(key)) {
+				var w = sentence.words[key];
+				if(key == 0)
+					returnVal.push(w.word.capitalize()); 
+				else
+					returnVal.push(w.word);
+			}
+		}
+		returnVal[rand] += injection;
+
+		return returnVal.join(" ") + sentence.ending.ending;
+	};
+
 	$scope.amount = 1;
 	$scope.returnType = 'p';
 	// This will eventually be dynamically populated via a call to the DB
@@ -35,21 +53,5 @@ function WordCtrl($scope, $http) {
 		return returnVal.join(" ");
 	};
 
-	// workhorse function that stitches a sentence together
-	var renderSentence = function(sentence) {
-		var returnVal = [], rand = sentence.randPos, injection = sentence.injection.injection;
-
-		for(key in sentence.words){
-			if (sentence.words.hasOwnProperty(key)) {
-				var w = sentence.words[key];
-				if(key == 0)
-					returnVal.push(w.word.capitalize()); 
-				else
-					returnVal.push(w.word);
-			}
-		}
-		returnVal[rand] += injection;
-
-		return returnVal.join(" ") + sentence.ending.ending;
-	};
+	
 }

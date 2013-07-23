@@ -178,7 +178,8 @@ def dict_to_paragraphs(collection):
 		for sentence_dict in para_dict['p']['sentences']:
 			new_word_collection = sentence_dict['sentence']['words']
 			random_word_no = sentence_dict['sentence']['randPos']
-			new_word_collection[random_word_no]['word'] += sentence_dict['sentence']['injection']['injection']
+			# commenting out the following line, cause it's breaking stuff
+			# new_word_collection[random_word_no]['word'] += sentence_dict['sentence']['injection']['injection']
 
 			sentence = ' '.join(str(word_dict['word']) for word_dict in new_word_collection)
 			sentence = upcase_first_letter(sentence)
