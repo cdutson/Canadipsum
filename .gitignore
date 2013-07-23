@@ -1,3 +1,2 @@
-*.db
 venv/*
 .sass-cache/*

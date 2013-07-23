@@ -2,7 +2,7 @@
 <html ng-app="canadipsum" style="background-image:url('{{ amz + background.filename }}')" data-bg="{{background.filename}}">
 	<head>
 		<title>Canadipsum</title>
-		
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic|Alfa+Slab+One' rel='stylesheet' type='text/css'>
 		<link href="{{ url_for('static', filename='css/main.css') }}" media="all" rel="stylesheet" type="text/css" />
 		<!--[if lt IE 9]>
@@ -45,12 +45,24 @@
 	</div>
 
 	<footer class="clearfix">
-		<p id="photo-credit">Background image from <a href="{{background.url}}">{{background.source}}</a>. Photo taken by {{background.author}}. <a href="mailto:canadipsum@wallofscribbles.com?subject=New%20Image%20Request">Send me yours!</a></p>
+		<p id="photo-credit">Background image from <a href="{{background.url}}">{{background.source}}</a>. Photo taken by {{background.author}}. <a href="mailto:canadipsum@wallofscribbles.com?subject=New%20Image%20Request">Send me yours!</a> Miss a word? <a href="mailto:canadipsum@wallofscribbles.com?subject=New%20Word%20Request">Tell me.</a></p>
 		<p id="byLine">Created by <a href="http://wallofscribbles.com">Corey Dutson</a>.</p>
 	</footer>
 	<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 	<script src="{{ url_for('static', filename='js/general.js') }}"></script>
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5784838-6', 'canadipsum.com');
+  ga('send', 'pageview');
+
+</script>
+
 	</body>
 </html>

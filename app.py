@@ -48,6 +48,11 @@ def init_db():
 			db.cursor().executescript(f.read())
 		db.commit()
 
+def pull_data():
+	#init_db()
+	with app.app_context():
+		db = get_db()
+		
 		global all_words
 		global all_endings
 		global all_injections
@@ -82,7 +87,7 @@ def query_db(query, args=(), one=False):
 
 def check_db():
 	if not all_words:
-		init_db()
+		pull_data()
 
 @app.teardown_appcontext
 def close_connection(exception):
